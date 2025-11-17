@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from ASD1.lesson01.task01 import LinkedList, Node
-from ASD1.test.lesson1.task01_2 import sum_one_size_lists
+from ASD1.test.lesson01.task01_2 import sum_one_size_lists
 
 class Test(TestCase):
     def test_sum_one_size_lists_empty(self):

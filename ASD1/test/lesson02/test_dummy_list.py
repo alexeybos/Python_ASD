@@ -1,0 +1,128 @@
+from unittest import TestCase
+
+from ASD1.test.lesson02.dummy_list import Node, TwoDummyLinkedList, OneDummyLinkedList
+
+class TestTwoDummyLinkedList(TestCase):
+    def test_add_in_tail_two_dummy(self):
+        list = TwoDummyLinkedList()
+        self.assertEqual(0, list.len())
+        list.add_in_tail(Node(1))
+        self.assertEqual(1, list.len())
+        list.add_in_tail(Node(2))
+        self.assertEqual(2, list.len())
+        list.add_in_tail(Node(3))
+        self.assertEqual(3, list.len())
+        self.assertEqual(1, list.get_head().value)
+        self.assertEqual(3, list.get_tail().value)
+
+    def test_delete_two_dummy(self):
+        list = TwoDummyLinkedList()
+        list.delete(5)
+        self.assertEqual(0, list.len())
+        list.add_in_tail(Node(1))
+        list.delete(1)
+        self.assertEqual(0, list.len())
+        self.assertIsNone(list.get_head())
+        self.assertIsNone(list.get_tail())
+        list.add_in_tail(Node(1))
+        list.add_in_tail(Node(2))
+        list.add_in_tail(Node(1))
+        list.add_in_tail(Node(3))
+        list.delete(1)
+        self.assertEqual(3, list.len())
+        self.assertEqual(2, list.get_head().value)
+        self.assertEqual(1, list.get_head().next.value)
+        self.assertEqual(3, list.get_tail().value)
+
+    def test_delete_two_dummy_many(self):
+        list = TwoDummyLinkedList()
+        list.add_in_tail(Node(1))
+        list.add_in_tail(Node(2))
+        list.add_in_tail(Node(1))
+        list.add_in_tail(Node(3))
+        list.delete(1, True)
+        self.assertEqual(2, list.len())
+        self.assertEqual(2, list.get_head().value)
+        self.assertEqual(3, list.get_tail().value)
+
+    def test_add_in_head_two_dummy(self):
+        list = TwoDummyLinkedList()
+        list.add_in_tail(Node(1))
+        list.add_in_head(Node(2))
+        self.assertEqual(2, list.len())
+        self.assertEqual(2, list.get_head().value)
+        self.assertEqual(1, list.get_tail().value)
+
+    def test_insert_two_dummy(self):
+        list = TwoDummyLinkedList()
+        list.add_in_head(Node(1))
+        list.add_in_head(Node(2))
+        list.add_in_head(Node(3))
+        list.insert(list.get_head().next, Node(4))
+        self.assertEqual(4, list.len())
+        self.assertEqual(3, list.get_head().value)
+        self.assertEqual(2, list.get_head().next.value)
+        self.assertEqual(4, list.get_head().next.next.value)
+        self.assertEqual(1, list.get_tail().value)
+
+    def test_add_in_head_one_dummy(self):
+        list = OneDummyLinkedList()
+        list.add_in_tail(Node(1))
+        list.add_in_head(Node(2))
+        self.assertEqual(2, list.len())
+        self.assertEqual(2, list.get_head().value)
+        self.assertEqual(1, list.get_tail().value)
+
+    def test_insert_one_dummy(self):
+        list = OneDummyLinkedList()
+        list.add_in_head(Node(1))
+        list.add_in_head(Node(2))
+        list.add_in_head(Node(3))
+        list.insert(list.get_head().next, Node(4))
+        self.assertEqual(4, list.len())
+        self.assertEqual(3, list.get_head().value)
+        self.assertEqual(2, list.get_head().next.value)
+        self.assertEqual(4, list.get_head().next.next.value)
+        self.assertEqual(1, list.get_tail().value)
+
+    def test_add_in_tail_one_dummy(self):
+        list = OneDummyLinkedList()
+        self.assertEqual(0, list.len())
+        list.add_in_tail(Node(1))
+        self.assertEqual(1, list.len())
+        list.add_in_tail(Node(2))
+        self.assertEqual(2, list.len())
+        list.add_in_tail(Node(3))
+        self.assertEqual(3, list.len())
+        self.assertEqual(1, list.get_head().value)
+        self.assertEqual(3, list.get_tail().value)
+
+    def test_delete_one_dummy(self):
+        list = OneDummyLinkedList()
+        list.delete(5)
+        self.assertEqual(0, list.len())
+        list.add_in_tail(Node(1))
+        list.delete(1)
+        self.assertEqual(0, list.len())
+        self.assertIsNone(list.get_head())
+        self.assertIsNone(list.get_tail())
+        list.add_in_tail(Node(1))
+        list.add_in_tail(Node(2))
+        list.add_in_tail(Node(1))
+        list.add_in_tail(Node(3))
+        list.delete(1)
+        self.assertEqual(3, list.len())
+        self.assertEqual(2, list.get_head().value)
+        self.assertEqual(1, list.get_head().next.value)
+        self.assertEqual(3, list.get_tail().value)
+
+    def test_delete_one_dummy_many(self):
+        list = OneDummyLinkedList()
+        list.add_in_tail(Node(1))
+        list.add_in_tail(Node(2))
+        list.add_in_tail(Node(1))
+        list.add_in_tail(Node(3))
+        list.delete(1, True)
+        self.assertEqual(2, list.len())
+        self.assertEqual(2, list.get_head().value)
+        self.assertEqual(3, list.get_tail().value)
