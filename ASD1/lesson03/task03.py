@@ -19,6 +19,11 @@ class DynArray:
             raise IndexError('Index is out of bounds')
         return self.array[i]
 
+    def __setitem__(self, i, val):
+        if i < 0 or i >= self.count:
+            raise IndexError('Index is out of bounds')
+        self.array[i] = val
+
     def resize(self, new_capacity):
         new_array = self.make_array(new_capacity)
         for i in range(self.count):

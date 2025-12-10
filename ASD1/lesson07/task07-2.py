@@ -1,31 +1,31 @@
 # 7. Упорядоченный список
 # 8.* Добавьте метод удаления всех дубликатов из упорядоченного списка.
 # Сложность временная O(n) и пространственная O(1)
-    def delete_duplicates(self):
-        node = self.head
-        if node is None:
-            return
-        while node.next is not None:
-            if node.value == node.next.value:
-                self.__del_node(node)
-            node = node.next
+def delete_duplicates(self):
+    node = self.head
+    if node is None:
+        return
+    while node.next is not None:
+        if node.value == node.next.value:
+            self.__del_node(node)
+        node = node.next
 
-    def __del_node(self, node: Node):
-        if node is None:
-            return
-        if node.prev is None and node.next is None:
-            self.clean(self.__ascending)
-            return
-        if self.head == node:
-            self.head = node.next
-            node.next.prev = None
-            return
-        if self.tail == node:
-            self.tail = node.prev
-            node.prev.next = None
-            return
-        node.prev.next = node.next
-        node.next.prev = node.prev
+def __del_node(self, node: Node):
+    if node is None:
+        return
+    if node.prev is None and node.next is None:
+        self.clean(self.__ascending)
+        return
+    if self.head == node:
+        self.head = node.next
+        node.next.prev = None
+        return
+    if self.tail == node:
+        self.tail = node.prev
+        node.prev.next = None
+        return
+    node.prev.next = node.next
+    node.next.prev = node.prev
 
 # 7. Упорядоченный список
 # 9.* Напишите алгоритм слияния двух упорядоченных списков в один, сохраняя порядок элементов.
