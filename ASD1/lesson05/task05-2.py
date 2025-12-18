@@ -17,23 +17,23 @@ class QueueByStacks:
         self.stack1.push(item)
 
     def dequeue(self):
-        if self.stack2.size() > 0:
+        if self.stack2._size() > 0:
             return self.stack2.pop()
-        while self.stack1.size() > 0:
+        while self.stack1._size() > 0:
             self.stack2.push(self.stack1.pop())
         return self.stack2.pop()
 
     def size(self):
-        return self.stack1.size() + self.stack2.size()
+        return self.stack1._size() + self.stack2._size()
 
 # 5. Очереди
 # 5.* Добавьте функцию, которая обращает все элементы в очереди в обратном порядке.
 # Сложность временная О(n) и пространственная О(n)
 def queue_reverse(queue):
     stack = Stack()
-    while queue.size() > 0:
+    while queue._size() > 0:
         stack.push(queue.dequeue())
-    while stack.size() > 0:
+    while stack._size() > 0:
         queue.enqueue(stack.pop())
 
 # 5. Очереди

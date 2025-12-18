@@ -33,7 +33,7 @@ class QueueByStacks:
 # Сложность временная О(n) и пространственная О(n)
 def queue_reverse(queue):
     stack = Stack()
-    while queue.size() > 0:
+    while queue._size() > 0:
         stack.push(queue.dequeue())
     while stack.size() > 0:
         queue.enqueue(stack.pop())
